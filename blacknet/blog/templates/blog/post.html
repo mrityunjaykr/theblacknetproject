@@ -1,0 +1,81 @@
+{% extends 'blog/basic.html' %}
+
+{% block title%}POST{% endblock %}
+{% block body %}
+<div  class="container my-3">
+    <h3>POST YOUR PRECIOUS IDEAS</h3>
+    <form action="" method="POST"  id="Blogpost" enctype="multipart/form-data">{% csrf_token %}
+              <div class="form-group">
+                <label for="title">TITLE</label>
+                <input type="text" class="form-control" id="title" name='title' placeholder="Enter Your Title">
+              </div>
+              <div class="form-group">
+                <label for="head0">HEADING</label>
+                <input type="text" class="form-control" id="head0" name='head0' placeholder="Enter Your Heading">
+              </div>
+
+                                <div class="form-group">
+                                    <label for="chead0">Write something about the Heading...</label>
+                                    <textarea class="form-control" id="chead0" name='chead0' rows="3"></textarea>
+                                </div>
+
+              <div class="form-group">
+                <label for="head1">Sub-Heading #1</label>
+                <input type="text" class="form-control" id="head1" name='head1' placeholder="Enter Your first sub-heading">
+              </div>
+
+                                <div class="form-group">
+                                    <label for="chead1">Write something about the 1st  Sub-Heading......</label>
+                                    <textarea class="form-control" id="chead1" name='chead1' rows="3"></textarea>
+                                </div>
+
+              <div class="form-group">
+                <label for="head2">Sub-Heading #2</label>
+                <input type="text" class="form-control" id="head2" name='head2' placeholder="Enter Your second sub-heading">
+              </div>
+
+
+                                <div class="form-group">
+                                    <label for="chead2">Write something about the 2nd Sub-Heading.........</label>
+                                    <textarea class="form-control" id="chead2" name='chead2' rows="3"></textarea>
+                                </div>
+
+              <div id="pub_date" class="form-group" inline="False">
+                  <i class="fas fa-calendar input-prefix"></i>
+                  <label for="pub_date">Select your date:</label>
+                  <input type="date" class="form-control" id="pub_date" name="pub_date"  placeholder="">
+            </div>
+
+            {#<div class="form-group">#}
+            {#  <label for="formFile" class="form-label">Upload image for your thumbnail</label>#}
+            {#  <input class="form-control" type="file" id="thumbnail">#}
+            {#</div>#}
+
+                    <div class="form-group">
+                         <label for="thumbnail">Select your image for thumbnail:</label>
+                         <input type="file" name="thumbnail" id="thumbnail">
+                    </div>
+
+                    <button type="submit" class="btn btn-success">POST</button>
+            </form>
+
+
+
+</div>
+{% endblock %}
+{% block js %}
+
+    <script>
+
+                // Data Picker Initialization
+            $('.datepicker').datepicker({
+              inline: true
+            });
+
+        {% if thank %}
+            alert('Thanks for posting your precious content. Take a look at your post on the blog page');
+            document.location = "/blog";
+        {%endif%}
+    </script>
+
+{% endblock %}
